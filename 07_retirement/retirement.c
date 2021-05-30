@@ -3,7 +3,7 @@
 
 struct _retire_info{
   int months;
-  double contributions;
+  double contribution;
   double rate_of_return;
 };
 typedef struct _retire_info retire_info;
@@ -24,7 +24,7 @@ void retirement(int startAge, double initial, retire_info working, retire_info r
 
   printf("Age %3d month %2d you have $%.2lf\n",age_year(startAge),age_month(startAge),b);
   while(i<working.months){
-    b=b+b*working.rate_of_return+working.contributions;
+    b=b+b*working.rate_of_return+working.contribution;
     startAge++;
     printf("Age %3d month %2d you have $%.2lf\n",age_year(startAge),age_month(startAge),b);
     i++;
@@ -33,7 +33,7 @@ void retirement(int startAge, double initial, retire_info working, retire_info r
   i=0;
 
   while(i<retired.months-1){
-    b=b+b*retired.rate_of_return+retired.contributions;
+    b=b+b*retired.rate_of_return+retired.contribution;
     startAge++;
     printf("Age %3d month %2d you have $%.2lf\n",age_year(startAge),age_month(startAge),b);
     i++;
@@ -47,10 +47,10 @@ int main(){
 
   working.months=489;
   working.rate_of_return=0.045/12;
-  working.contributions=1000;
+  working.contribution=1000;
   retired.months=384;
   retired.rate_of_return=0.01/12;
-  retired.contributions=-4000;
+  retired.contribution=-4000;
 
   retirement(startAge, initial, working, retired);
 
